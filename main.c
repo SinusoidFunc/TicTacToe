@@ -1,5 +1,5 @@
 #include "greetings.c"
-#include "utils.h"
+//#include "utils.h"
 
 
 int main(void) {

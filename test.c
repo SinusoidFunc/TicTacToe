@@ -1,21 +1,11 @@
 #include <stdio.h>
-int func(void);
+#include <ctype.h>
 
-int massive[3] = {1, 2, 3};
-
-
-int main(void) {
-    for (int i = 0; i < 3; i++)
-        printf("%d\n", massive[i]);
-    printf("another one\n");
-    func();
+int main() {
+    int num;
+    int ret;
+    char ch;
+    scanf("%d\n", &num);
+    printf("%d\n", num);
     return 0;
 }
-
-
-int func(void) {
-    for (int i = 0; i < 3; i++)
-        printf("%d\n", massive[i]);
-    return 0;
-}
-    

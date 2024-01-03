@@ -1,6 +1,8 @@
-#include <stdio.h>
+#include "vars.h"
 
+MenuStatus = 1;
 
+int greetings(void);
 
 int greetings(void) {
     printf("Hello, players in TicTacToe.\n");
@@ -22,4 +24,9 @@ int greetings(void) {
     return 0;
 }
 
-    
+
+// int menu(void) {
+//     while (MenuStatus != 0) {
+        
+//     }
+// }

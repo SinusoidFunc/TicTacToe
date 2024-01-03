@@ -2,10 +2,13 @@
 #include <ctype.h>
 
 int main() {
-    int num;
-    int ret;
-    char ch;
-    scanf("%d\n", &num);
-    printf("%d\n", num);
+    char* massive[2][2] = {{'H', 'A'}, {'L', 'O'}};
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("The char is: %c\n", massive[i][j]);
+        }
+    }
     return 0;
+
 }

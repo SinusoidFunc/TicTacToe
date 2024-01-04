@@ -5,4 +5,3 @@ extern char X;
 extern char O;
 extern int Player;
 extern int Moves;
-extern int MenuStatus;

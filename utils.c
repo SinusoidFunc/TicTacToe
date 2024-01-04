@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "vars.h"
 #include "map.c"
-#include "menu.c"
+
 
 
 int move(void);
@@ -10,30 +10,39 @@ int have_won(void);
 int draw(void);
 int grats(void);
 int play(void);
+int score_up(void);
 
 int MAP[LENGTH] = {};
 char X = 'X';
 char O = 'O';
 int Player = 1;
-int Moves = 0;
+
+struct score {
+    int player1;
+    int player2;
+};
+struct score Score = {0, 0};
 
 
 
 int play() {
+    int Moves = 0;
     int pos, result;
     fill_map();
     print_map();
-    while ((result = have_won()) == 1 && Moves < 10) {
+    while ((result = have_won()) == 1 && Moves < 9) {
+        printf("Moves: %d\n", Moves);
         pos = move();        
-        Moves++;
+        ++Moves;
         
         fill_square(pos);
         Player = turn_player(Player);
         print_map();
     }
-
-    if (result == 0)
+    if (result == 0) {
         grats();
+        score_up();
+    }
     else
         draw();
 
@@ -60,6 +69,7 @@ int move(void) {
     printf("Player %d, input your number[0-8]: ", Player);
     while (try != 1 || (!(pos < 9 && pos >= 0))) {
         try = scanf("%d", &pos);
+        
          // Is square engaged?
         if (pos > 9 || pos < 0) {
             try = 0;
@@ -98,8 +108,9 @@ int have_won(void) {
 
 
 int grats(void) {
+    int temp;
     printf("-----------------------------------\n");
-    printf("Congratulations, player %d. You won\n", turn_player(Player));
+    printf("Congratulations, player %d. You won!!!\n", turn_player(Player));
     printf("-----------------------------------\n");
 }
 
@@ -109,3 +120,12 @@ int draw() {
     printf("This time frendship won\n");
     printf("-----------------------------------\n");
 }
+
+
+int score_up(void) {
+    if (Player == 1) 
+        Score.player2++;
+    else if (Player == 2)
+        Score.player1++;
+}
+
